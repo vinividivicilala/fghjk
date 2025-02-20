@@ -1,333 +1,1147 @@
-<!DOCTYPE html> 
+<!DOCTYPE html> 
+
 <html lang="id">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Farid Ardiansyah </title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: black;
-            color: white;
-            line-height: 1.6;
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        .container {
-            padding: 80px 20px 20px;
-        }
-        .content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            background-color: #333;
-            color: white;
-            font-size: 16px;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #ffffff;
-            color: black;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .comment {
-            background-color: #transparent;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
-        .comment .author {
-            font-weight: bold;
-            color: #ffffff;
-        }
-        .replies {
-            margin-left: 20px;
-            padding-left: 10px;
-            border-left: 2px solid #555;
-        }
-		.announcement {
-            background-color: #444;
-            color: #ffffff;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border: 2px solid #00ffcc;
-            box-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
-            animation: fadeIn 1s ease-in-out;
-        }
 
-        .announcement h3 {
-            margin: 0 0 10px;
-            font-size: 20px;
-            color: #ffffff;
-        }
+    <meta charset="UTF-8">
 
-        .announcement p {
-            margin: 5px 0;
-            font-size: 16px;
-        }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        .blinking-dot {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background-color: #ff0000;
-            border-radius: 50%;
-            animation: blink 1s infinite;
-            margin-left: 5px;
-        }
+    <title> Farid Ardiansyah</title>
 
-        @keyframes blink {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0;
-            }
-        }
+    <style>
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        body {
 
-        .by-author {
-            background-color: #1d4ed8; /* Warna biru */
-            color: white;
-            padding: 5px 10px;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 14px;
-        }
+            font-family: Arial, sans-serif;
 
-        .by-author a {
-            color: white;
-            text-decoration: none;
-        }
+            margin: 0;
 
-        .by-author a:hover {
-            text-decoration: underline;
-        }
-		.social-links {
-      display: flex;
-      gap: 3rem; /* Jarak antar link */
-    }
- .social-links a {
-      display: flex;
-      align-items: center; /* Sejajarkan logo dan teks */
-      text-decoration: none;
-      color: #fff;
-      font-size: 2rem; /* Ukuran font lebih besar */
-      transition: color 0.3s ease;
-    }
-    .social-links a:hover {
-      color: #888;
-    }
-    .social-links a svg {
-      width: 48px; /* Ukuran logo besar */
-      height: 48px;
-      margin-right: 12px; /* Jarak antara logo dan teks */
-    }
+            padding: 0;
+
+            background-color: black;
+
+            color: white;
+
+            line-height: 1.6;
+
+        }
+
+  .navbar {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 10px 20px;
+
+            position: fixed;
+
+            width: 100%;
+
+            top: 0;
+
+            z-index: 1000;
+
+        }
+
+        .container {
+
+            display: flex; /* Aktifkan flexbox untuk container */
+
+            flex-direction: column; /* Atur arah flex menjadi column */
+
+            align-items: center; /* Pusatkan elemen horizontal */
+
+            padding: 80px 20px 20px;
+
+            min-height: 100vh; /* Pastikan container memenuhi tinggi viewport */
+
+        }
 
 
-    </style>
+
+        .content {
+
+            max-width: 1000px;
+
+            width: 100%; /* Pastikan content memenuhi lebar container */
+
+            margin: 0 auto;
+
+        }
+
+
+
+        .comment-section {
+
+            display: flex; /* Mengaktifkan flexbox */
+
+            flex-direction: column; /* Mengatur arah flex menjadi column */
+
+            width: 100%; /* Memastikan section memenuhi lebar container */
+
+        }
+
+
+
+  textarea {
+
+            width: 100%;
+
+            padding: 10px;
+
+            border-radius: 5px;
+
+            border: 1px solid #ccc;
+
+            background-color: #333;
+
+            color: white;
+
+            font-size: 16px;
+
+        }
+
+        button {
+
+            padding: 10px 20px;
+
+            background-color: #ffffff;
+
+            color: black;
+
+            border: none;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+        }
+
+.comment {
+
+            background-color: #transparent;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+            margin-bottom: 10px;
+
+        }
+
+        .comment .author {
+
+            font-weight: bold;
+
+            color: #ffffff;
+
+        }
+
+        .replies {
+
+            margin-left: 20px;
+
+            padding-left: 10px;
+
+            border-left: 2px solid #555;
+
+        }
+
+
+.announcement {
+
+            background-color: #444;
+
+            color: #ffffff;
+
+            border-radius: 10px;
+
+            padding: 20px;
+
+            margin-bottom: 20px;
+
+            border: 2px solid #00ffcc;
+
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+
+            animation: fadeIn 1s ease-in-out;
+
+        }
+
+
+
+        .announcement h3 {
+
+            margin: 0 0 10px;
+
+            font-size: 20px;
+
+            color: #ffffff;
+
+        }
+
+
+
+        .announcement p {
+
+            margin: 5px 0;
+
+            font-size: 16px;
+
+        }
+
+   .blinking-dot {
+
+            display: inline-block;
+
+            width: 10px;
+
+            height: 10px;
+
+            background-color: #ff0000;
+
+            border-radius: 50%;
+
+            animation: blink 1s infinite;
+
+            margin-left: 5px;
+
+        }
+
+
+
+        @keyframes blink {
+
+            0%, 100% {
+
+                opacity: 1;
+
+            }
+
+            50% {
+
+                opacity: 0;
+
+            }
+
+        }
+
+     @keyframes fadeIn {
+
+            from {
+
+                opacity: 0;
+
+            }
+
+            to {
+
+                opacity: 1;
+
+            }
+
+        }
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+        .by-author {
+
+            background-color: #1d4ed8; /* Warna biru */
+
+            color: white;
+
+            padding: 5px 10px;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            font-size: 14px;
+
+        }
+
+
+
+        .by-author a {
+
+            color: white;
+
+            text-decoration: none;
+
+        }
+
+
+
+        .by-author a:hover {
+
+            text-decoration: underline;
+
+        }
+
+.social-links {
+
+      display: flex;
+
+      gap: 3rem; /* Jarak antar link */
+
+    }
+
+
+.social-links a {
+
+      display: flex;
+
+      align-items: center; /* Sejajarkan logo dan teks */
+
+      text-decoration: none;
+
+      color: #fff;
+
+      font-size: 2rem; /* Ukuran font lebih besar */
+
+      transition: color 0.3s ease;
+
+    }
+
+    .social-links a:hover {
+
+      color: #888;
+
+    }
+
+    .social-links a svg {
+
+      width: 48px; /* Ukuran logo besar */
+
+      height: 48px;
+
+      margin-right: 12px; /* Jarak antara logo dan teks */
+
+    }
+
+.badge {
+
+            display: inline-block;
+
+            padding: 2px 6px;
+
+            border-radius: 4px;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            color: white;
+
+            margin-left: 5px;
+
+        }
+
+        .badge.admin {
+
+            background-color: #FF6347; /* Warna merah untuk Admin */
+
+        }
+
+        .badge.contributor {
+
+            background-color: #28a745; /* Warna hijau untuk Kontributor */
+
+        }
+
+        .badge.member {
+
+            background-color: #007bff; /* Warna biru untuk Member */
+
+        }
+
+
+.latest-comments {
+
+            margin-top: 20px;
+
+            border-top: 1px solid #555; /* Separator line */
+
+            padding-top: 20px;
+
+        }
+
+
+
+        .latest-comments h2 {
+
+            color: #fff; /* Example color */
+
+        }
+
+
+
+        .latest-comments .comment {
+
+            background-color:  #dc3545; /* Slightly darker background for latest comments */
+
+            padding: 10px; /* Reduced padding */
+
+            margin-bottom: 5px; /* Reduced margin */
+
+            border-radius: 5px; /* Slightly smaller border radius */
+
+        }
+
+
+.new-label {
+
+            background-color:  #007bff;
+
+            color: black;
+
+            padding: 5px 10px;
+
+            border-radius: 5px;
+
+            font-size: 14px;
+
+            margin-left: 10px;
+
+            display: inline-block;
+
+        }
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+        .by-author {
+
+            background-color: #1d4ed8;
+
+            color: white;
+
+            padding: 5px 10px;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            font-size: 14px;
+
+        }
+
+        .by-author a {
+
+            color: white;
+
+            text-decoration: none;
+
+        }
+
+        .by-author a:hover {
+
+            text-decoration: underline;
+
+        }
+
+        .like-btn {
+
+            background-color: green;
+
+            color: white;
+
+        }
+
+        .unlike-btn {
+
+            background-color: red;
+
+            color: white;
+
+        }
+
+        .like-btn.active, .unlike-btn.active {
+
+            font-weight: bold; /* Efek visual saat aktif */
+
+        }
+
+        .like-count, .unlike-count {
+
+            display: inline-block;
+
+            margin-left: 5px;
+
+        }
+
+
+  .author {
+
+            position: relative;
+
+            display: inline-block;
+
+        }
+
+
+
+        .author .tooltip {
+
+            visibility: hidden;
+
+            width: 120px;
+
+            background-color: #555;
+
+            color: #fff;
+
+            text-align: center;
+
+            border-radius: 6px;
+
+            padding: 5px;
+
+            position: absolute;
+
+            z-index: 1;
+
+            bottom: 125%; /* Posisi di atas elemen */
+
+            left: 50%;
+
+            margin-left: -60px; /* Tengah tooltip */
+
+            opacity: 0;
+
+            transition: opacity 0.5s;
+
+        }
+
+
+        .author:hover .tooltip {
+
+            visibility: visible;
+
+            opacity: 1;
+
+        }
+
+
+
+        .author .tooltip::after {
+
+            content: "";
+
+            position: absolute;
+
+            top: 100%;
+
+            left: 50%;
+
+            margin-left: -5px;
+
+            border-width: 5px;
+
+            border-style: solid;
+
+            border-color: #555 transparent transparent transparent;
+
+        }
+
+  </style>
+
 </head>
-<body>
-    <nav class="navbar">
-	<div class="brand">
-        <h1>Farid Ardiansyah - Forum Komentar</h1>
-		<span class="by-author">
-            by <a href="https://www.instagram.com/fardardinsyh">@fardardinsyh</a>
-        </span>
-    </div>
-	 </nav>
 
-    <div class="container">
-        <div class="content">
-		<div class="announcement">
-    <h3>📢<span class="blinking-dot"></span> Pengumuman</h3>
-    <p>🔥 Harap jaga kesopanan dalam berkomunikasi.</p>
-    <p>🎯 Jangan gunakan bahasa yang menyinggung atau tidak pantas.</p>
-    <p>✅ Semua komentar akan melalui sistem sebelum ditampilkan.</p>
-	<p>🔥 Website ini masih dikembangkan.</p>
+<body>
+
+    <nav class="navbar">
+
+<div class="brand">
+
+        <h1>Farid Ardiansyah - Forum Komentar</h1>
+
+<span class="by-author">
+
+            by <a href="https://www.instagram.com/fardardinsyh">@fardardinsyh</a>
+
+        </span>
+
+    </div>
+
+</nav>
+
+    <div class="container">
+
+        <div class="content">
+
+<div class="announcement">
+
+    <h3>📢<span class="blinking-dot"></span> Pengumuman</h3>
+
+    <p>🔥 Harap jaga kesopanan dalam berkomunikasi.</p>
+
+    <p>🎯 Jangan gunakan bahasa yang menyinggung atau tidak pantas.</p>
+
+    <p>✅ Semua komentar akan melalui sistem sebelum ditampilkan.</p>
+
+<p>🔥 Website ini masih dikembangkan.</p>
+
 </div>
 
-            <h2>Forum Komentar</h2>
-            <textarea id="commentInput" placeholder="Tulis komentar Anda di sini..." rows="4"></textarea>
-            <br>
-            <button id="submitComment">Kirim Komentar</button>
-            <div class="comment-section" id="commentSection"></div>
-        </div>
-    </div>
-	  <div class="social-links">
-    <a href="" target="_blank">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2.25c-5.387 0-9.75 4.363-9.75 9.75s4.363 9.75 9.75 9.75c2.827 0 5.383-1.192 7.187-3.11a.75.75 0 0 0-1.098-1.02 8.251 8.251 0 1 1 1.043-12.463c.142.142.287.288.434.437h-2.275a.75.75 0 0 0 0 1.5h3.75a.75.75 0 0 0 .75-.75v-3.75a.75.75 0 0 0-1.5 0v1.343A9.733 9.733 0 0 0 12 2.25zm4.978 10.479a.75.75 0 0 0-.532.372 4.51 4.51 0 0 1-3.946 2.265.75.75 0 0 0 0 1.5 5.982 5.982 0 0 0 3.951-1.453c-.363.74-.917 1.703-1.879 2.332a.75.75 0 0 0 .823 1.248c1.57-1.034 2.207-2.5 2.564-3.5a.75.75 0 0 0-.58-.964h-.401z" />
-      </svg>
-      Quora
-    </a>
-    <a href="" target="_blank">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M5.665 11.504c.966 0 1.548-.597 1.548-1.458s-.582-1.412-1.516-1.412H3.879v2.87h1.786zm.259 1.148H3.879v3.139h2.22c.975 0 1.668-.626 1.668-1.58 0-.96-.693-1.56-1.843-1.56zM0 2.996A2.996 2.996 0 0 1 2.996 0h18.008A2.996 2.996 0 0 1 24 2.996v18.008A2.996 2.996 0 0 1 21.004 24H2.996A2.996 2.996 0 0 1 0 21.004V2.996zM9.335 12.652c0-1.93-1.405-3.177-3.457-3.177H0v8.945h5.764c2.018 0 3.571-1.254 3.571-3.204 0-1.269-.692-2.34-1.735-2.564zm7.97-4.06h4.194v1.047h-4.194V8.592zm4.194 5.662c0-.206-.02-.406-.056-.6H15.73a1.93 1.93 0 0 0 1.74 1.047c.7 0 1.293-.27 1.778-.762l1.118.808a3.556 3.556 0 0 1-5.634-2.645h7.132zm.56-1.528h-4.242c.19-.857.822-1.406 1.64-1.406s1.449.434 1.707 1.157l.895-.494a3.013 3.013 0 0 0-2.602-1.324 3.55 3.55 0 0 0-3.525 3.555c0 1.96 1.59 3.555 3.55 3.555 2.065 0 3.577-1.653 3.577-3.645z" />
-      </svg>
-      Behance
-    </a>
-    <a href="" target="_blank">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M23.953 4.569c-.885.39-1.83.654-2.825.775 1.014-.608 1.794-1.574 2.163-2.724-.951.564-2.005.974-3.127 1.195-.896-.956-2.173-1.555-3.59-1.555-2.717 0-4.924 2.2-4.924 4.917 0 .39.045.765.13 1.124C7.728 8.087 4.1 6.13 1.67 3.149c-.427.722-.668 1.56-.668 2.476 0 1.71.87 3.223 2.188 4.107-.806-.026-1.566-.247-2.23-.616v.062c0 2.385 1.693 4.374 3.946 4.827-.413.112-.846.171-1.292.171-.314 0-.615-.03-.917-.086.617 1.926 2.416 3.325 4.544 3.364-1.665 1.304-3.76 2.084-6.04 2.084-.39 0-.779-.023-1.17-.067 2.148 1.373 4.697 2.175 7.419 2.175 8.902 0 13.756-7.368 13.756-13.756 0-.21 0-.423-.016-.634.94-.684 1.765-1.53 2.42-2.498l-.047-.02z" />
-      </svg>
-      Twitter
-    </a>
-    <a href="" target="_blank">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M19.635 3.308a3.009 3.009 0 0 1 2.115 2.118c.482 1.74.482 5.372.482 5.372s0 3.632-.482 5.372a3.009 3.009 0 0 1-2.115 2.118C17.932 19 12 19 12 19s-5.932 0-7.635-.51a3.009 3.009 0 0 1-2.115-2.118C1.768 14.632 1.768 11 1.768 11s0-3.632.482-5.372A3.009 3.009 0 0 1 4.365 3.31C6.068 2.8 12 2.8 12 2.8s5.932 0 7.635.508zm-9.385 7.872v4.358l4.3-2.179-4.3-2.179z" />
-      </svg>
-      YouTube
-    </a>
-    <a href="https://www.instagram.com/fardardinsyh/" target="_blank">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 2.25h-9A5.25 5.25 0 0 0 2.25 7.5v9a5.25 5.25 0 0 0 5.25 5.25h9a5.25 5.25 0 0 0 5.25-5.25v-9a5.25 5.25 0 0 0-5.25-5.25zM12 7.875A4.125 4.125 0 1 1 7.875 12 4.13 4.13 0 0 1 12 7.875zm5.25-1.313a.938.938 0 1 1-.938-.938.938.938 0 0 1 .938.938z"/>
-      </svg>
-      Instagram
-    </a>
-    <a href="" target="_blank">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M16.98 9.438c-1.518 0-2.273.837-2.666 1.43V9.937H12.75V20h1.564v-4.66c0-1.115.2-2.22 1.574-2.22 1.36 0 1.37 1.283 1.37 2.3V20H19.82v-5.72c0-3.104-1.595-4.842-4.092-4.842zM7.75 9.937H6.184V20H7.75V9.937zm.81-3.04c0 .62-.503 1.123-1.123 1.123a1.127 1.127 0 1 1 1.123-1.123z"/>
-      </svg>
-      LinkedIn
-    </a>
-  </div>
-	
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
-        import { getDatabase, ref, push, onChildAdded } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js";
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyD5pDbvvA65DqRHIY4EA_4BAr1jsQffmpg",
-            authDomain: "wowo-48903.firebaseapp.com",
-            databaseURL: "https://wowo-48903-default-rtdb.asia-southeast1.firebasedatabase.app",
-            projectId: "wowo-48903",
-            storageBucket: "wowo-48903.appspot.com",
-            messagingSenderId: "70786358791",
-            appId: "1:70786358791:web:9ca6a8c3d46ead330714a2",
-            measurementId: "G-80KRHNMWJQ"
-        };
+ <div class="latest-comments">
 
-        const app = initializeApp(firebaseConfig);
-        const database = getDatabase(app);
-        const commentRef = ref(database, "comments");
+                <h2>Komentar Terbaru<span class="new-label">BETA</span></h2>
 
-        // Daftar kata-kata yang tidak pantas
-        const bannedWords = ["jelek", "goblog", "dongo", "bego", "goblog", "anjing", "babi", "monyet", "sok pintar", "ribut", "gabisa apa2", "so2an ngoding", "ga guna", "nganggur", "pengangguran", "miskin", "bodoh", "tablo", "ganteng", "jelek"]; // Ganti dengan kata-kata tidak pantas
+                <div class="comment-section" id="latestCommentSection"></div> </div>
 
-        // Fungsi untuk memfilter kata-kata tidak pantas
-        const filterText = (text) => {
-            let filteredText = text;
-            bannedWords.forEach((word) => {
-                const regex = new RegExp(`\\b${word}\\b`, "gi"); // Regex untuk mencocokkan kata secara case-insensitive
-                filteredText = filteredText.replace(regex, "*".repeat(word.length));
-            });
-            return filteredText;
-        };
+        </div>
 
-        const addComment = (author, text, parentId = null) => {
-            const filteredText = filterText(text); // Filter komentar sebelum disimpan
-            push(commentRef, { author, text: filteredText, parentId, timestamp: Date.now() });
-        };
+    </div>
 
-        const addCommentToDOM = (id, author, text, timestamp, parentId = null) => {
-            const commentSection = document.getElementById("commentSection");
-            const formattedTime = new Date(timestamp).toLocaleString("id-ID", {
-                weekday: "short",
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit"
-            });
 
-            const filteredText = filterText(text); // Filter komentar sebelum ditampilkan
 
-            const commentDiv = document.createElement("div");
-            commentDiv.className = "comment";
-            commentDiv.setAttribute("data-id", id);
-            commentDiv.innerHTML = `
-                <div class="author">${author} - ${formattedTime}</div>
-                <div class="text">${filteredText}</div>
-                <button class="reply-btn">Balas</button>
-                <div class="replies"></div>
-            `;
+ 
 
-            if (parentId) {
-                const parentComment = document.querySelector(`[data-id='${parentId}'] .replies`);
-                parentComment.appendChild(commentDiv);
-            } else {
-                commentSection.appendChild(commentDiv);
-            }
+   <h2>Forum Komentar</h2>
 
-            const replyBtn = commentDiv.querySelector(".reply-btn");
-            replyBtn.addEventListener("click", () => {
-                const replyInput = document.createElement("textarea");
-                replyInput.placeholder = "Tulis balasan Anda...";
-                replyInput.rows = 2;
-                const sendReplyBtn = document.createElement("button");
-                sendReplyBtn.textContent = "Kirim Balasan";
+            <textarea id="commentInput" placeholder="Tulis komentar Anda di sini..." rows="4"></textarea>
 
-                commentDiv.appendChild(replyInput);
-                commentDiv.appendChild(sendReplyBtn);
+            <br>
 
-                sendReplyBtn.addEventListener("click", () => {
-                    const replyText = replyInput.value.trim();
-                    if (replyText) {
-                        const filteredReplyText = filterText(replyText);
-                        addComment("Pengguna", filteredReplyText, id);
-                        replyInput.remove();
-                        sendReplyBtn.remove();
-                    }
-                });
-            });
-        };
+            <button id="submitComment">Kirim Komentar</button>
 
-        document.getElementById("submitComment").addEventListener("click", () => {
-            const commentInput = document.getElementById("commentInput");
-            const text = commentInput.value.trim();
-            if (text) {
-                addComment("Pengguna", text);
-                commentInput.value = "";
-            }
-        });
+            <div class="comment-section" id="commentSection"></div>
 
-        onChildAdded(commentRef, (data) => {
-            const comment = data.val();
-            addCommentToDOM(data.key, comment.author, comment.text, comment.timestamp, comment.parentId);
-        });
-		
-    </script>
+        </div>
+
+    </div>
+
+  <div class="social-links">
+
+    <a href="" target="_blank">
+
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+
+        <path d="M12 2.25c-5.387 0-9.75 4.363-9.75 9.75s4.363 9.75 9.75 9.75c2.827 0 5.383-1.192 7.187-3.11a.75.75 0 0 0-1.098-1.02 8.251 8.251 0 1 1 1.043-12.463c.142.142.287.288.434.437h-2.275a.75.75 0 0 0 0 1.5h3.75a.75.75 0 0 0 .75-.75v-3.75a.75.75 0 0 0-1.5 0v1.343A9.733 9.733 0 0 0 12 2.25zm4.978 10.479a.75.75 0 0 0-.532.372 4.51 4.51 0 0 1-3.946 2.265.75.75 0 0 0 0 1.5 5.982 5.982 0 0 0 3.951-1.453c-.363.74-.917 1.703-1.879 2.332a.75.75 0 0 0 .823 1.248c1.57-1.034 2.207-2.5 2.564-3.5a.75.75 0 0 0-.58-.964h-.401z" />
+
+      </svg>
+
+      Quora
+
+    </a>
+
+<a href="" target="_blank">
+
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+
+        <path d="M5.665 11.504c.966 0 1.548-.597 1.548-1.458s-.582-1.412-1.516-1.412H3.879v2.87h1.786zm.259 1.148H3.879v3.139h2.22c.975 0 1.668-.626 1.668-1.58 0-.96-.693-1.56-1.843-1.56zM0 2.996A2.996 2.996 0 0 1 2.996 0h18.008A2.996 2.996 0 0 1 24 2.996v18.008A2.996 2.996 0 0 1 21.004 24H2.996A2.996 2.996 0 0 1 0 21.004V2.996zM9.335 12.652c0-1.93-1.405-3.177-3.457-3.177H0v8.945h5.764c2.018 0 3.571-1.254 3.571-3.204 0-1.269-.692-2.34-1.735-2.564zm7.97-4.06h4.194v1.047h-4.194V8.592zm4.194 5.662c0-.206-.02-.406-.056-.6H15.73a1.93 1.93 0 0 0 1.74 1.047c.7 0 1.293-.27 1.778-.762l1.118.808a3.556 3.556 0 0 1-5.634-2.645h7.132zm.56-1.528h-4.242c.19-.857.822-1.406 1.64-1.406s1.449.434 1.707 1.157l.895-.494a3.013 3.013 0 0 0-2.602-1.324 3.55 3.55 0 0 0-3.525 3.555c0 1.96 1.59 3.555 3.55 3.555 2.065 0 3.577-1.653 3.577-3.645z" />
+
+      </svg>
+
+      Behance
+
+    </a>
+
+    <a href="" target="_blank">
+
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+
+        <path d="M23.953 4.569c-.885.39-1.83.654-2.825.775 1.014-.608 1.794-1.574 2.163-2.724-.951.564-2.005.974-3.127 1.195-.896-.956-2.173-1.555-3.59-1.555-2.717 0-4.924 2.2-4.924 4.917 0 .39.045.765.13 1.124C7.728 8.087 4.1 6.13 1.67 3.149c-.427.722-.668 1.56-.668 2.476 0 1.71.87 3.223 2.188 4.107-.806-.026-1.566-.247-2.23-.616v.062c0 2.385 1.693 4.374 3.946 4.827-.413.112-.846.171-1.292.171-.314 0-.615-.03-.917-.086.617 1.926 2.416 3.325 4.544 3.364-1.665 1.304-3.76 2.084-6.04 2.084-.39 0-.779-.023-1.17-.067 2.148 1.373 4.697 2.175 7.419 2.175 8.902 0 13.756-7.368 13.756-13.756 0-.21 0-.423-.016-.634.94-.684 1.765-1.53 2.42-2.498l-.047-.02z" />
+
+      </svg>
+
+   Twitter
+
+    </a>
+
+    <a href="" target="_blank">
+
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+
+        <path d="M19.635 3.308a3.009 3.009 0 0 1 2.115 2.118c.482 1.74.482 5.372.482 5.372s0 3.632-.482 5.372a3.009 3.009 0 0 1-2.115 2.118C17.932 19 12 19 12 19s-5.932 0-7.635-.51a3.009 3.009 0 0 1-2.115-2.118C1.768 14.632 1.768 11 1.768 11s0-3.632.482-5.372A3.009 3.009 0 0 1 4.365 3.31C6.068 2.8 12 2.8 12 2.8s5.932 0 7.635.508zm-9.385 7.872v4.358l4.3-2.179-4.3-2.179z" />
+
+      </svg>
+
+      YouTube
+
+    </a>
+
+    <a href="https://www.instagram.com/fardardinsyh/" target="_blank">
+
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+
+        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 2.25h-9A5.25 5.25 0 0 0 2.25 7.5v9a5.25 5.25 0 0 0 5.25 5.25h9a5.25 5.25 0 0 0 5.25-5.25v-9a5.25 5.25 0 0 0-5.25-5.25zM12 7.875A4.125 4.125 0 1 1 7.875 12 4.13 4.13 0 0 1 12 7.875zm5.25-1.313a.938.938 0 1 1-.938-.938.938.938 0 0 1 .938.938z"/>
+
+      </svg>
+
+      Instagram
+
+   </a>
+
+    <a href="" target="_blank">
+
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+
+        <path stroke-linecap="round" stroke-linejoin="round" d="M16.98 9.438c-1.518 0-2.273.837-2.666 1.43V9.937H12.75V20h1.564v-4.66c0-1.115.2-2.22 1.574-2.22 1.36 0 1.37 1.283 1.37 2.3V20H19.82v-5.72c0-3.104-1.595-4.842-4.092-4.842zM7.75 9.937H6.184V20H7.75V9.937zm.81-3.04c0 .62-.503 1.123-1.123 1.123a1.127 1.127 0 1 1 1.123-1.123z"/>
+
+      </svg>
+
+      LinkedIn
+
+    </a>
+
+  </div>
+
+  
+
+  <script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+
+import { getDatabase, ref, push, onChildAdded, onValue, update, runTransaction} from "https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js"; // Tambahkan onValue di sini
+
+
+
+    const firebaseConfig = {
+
+        apiKey: "AIzaSyD5pDbvvA65DqRHIY4EA_4BAr1jsQffmpg",
+
+        authDomain: "wowo-48903.firebaseapp.com",
+
+        databaseURL: "https://wowo-48903-default-rtdb.asia-southeast1.firebasedatabase.app",
+
+        projectId: "wowo-48903",
+
+        storageBucket: "wowo-48903.appspot.com",
+
+        messagingSenderId: "70786358791",
+
+        appId: "1:70786358791:web:9ca6a8c3d46ead330714a2",
+
+        measurementId: "G-80KRHNMWJQ"
+
+    };
+
+
+
+    const app = initializeApp(firebaseConfig);
+
+    const database = getDatabase(app);
+
+    const commentRef = ref(database, "comments");
+
+const latestCommentSection = document.getElementById("latestCommentSection");
+
+        const maxLatestComments = 5;
+
+
+
+    // Daftar kata-kata yang tidak pantas
+
+    const bannedWords = ["jelek", "goblog", "dongo", "bego", "goblog", "anjing", "babi", "monyet", "sok pintar", "ribut", "gabisa apa2", "so2an ngoding", "ga guna", "nganggur", "pengangguran", "miskin", "bodoh", "tablo", "ganteng", "jelek"];
+
+
+
+   const filterText = (text) => {
+
+    if (typeof text !== 'string') { // Check if text is not a string
+
+        return text; // Or return a default value like ""
+
+    }
+
+
+
+    let filteredText = text;
+
+    bannedWords.forEach((word) => {
+
+        const regex = new RegExp(`\\b${word}\\b`, "gi");
+
+        filteredText = filteredText.replace(regex, "*".repeat(word.length));
+
+    });
+
+    return filteredText;
+
+};
+
+
+
+    // Fungsi untuk menambahkan komentar
+
+    const addComment = (author, text, parentId = null) => {
+
+        const filteredText = filterText(text);
+
+
+
+        // Logika untuk menentukan role
+
+        let role = "Member"; // Default role
+
+        if (author.toLowerCase() === "admin") {
+
+            role = "Admin";
+
+        } else if (author.toLowerCase() === "kontributor") {
+
+            role = "Kontributor";
+
+        }
+
+
+
+        push(commentRef, {  // Buka kurung kurawal untuk objek
+
+        author, 
+
+        text: filteredText, 
+
+        parentId, 
+
+        role, 
+
+        timestamp: Date.now(), 
+
+        likes: 0,  
+
+        unlikes: 0   
+
+    }); // Tutup kurung kurawal untuk objek DAN kurung untuk fungsi push
+
+};
+
+
+
+    // Fungsi untuk menambahkan komentar ke DOM
+
+    const addCommentToDOM = (id, author, text, timestamp, role, parentId = null, likes = 0, unlikes = 0) => {
+
+        const commentSection = document.getElementById("commentSection");
+
+        const formattedTime = new Date(timestamp).toLocaleString("id-ID", {
+
+            weekday: "short",
+
+            hour: "2-digit",
+
+            minute: "2-digit",
+
+            second: "2-digit"
+
+        });
+
+
+
+        const filteredText = filterText(text);
+
+
+
+        // Tampilkan badge berdasarkan role
+
+        let badge = "";
+
+        if (role === "Admin") {
+
+            badge = '<span class="badge admin">Admin</span>';
+
+        } else if (role === "Kontributor") {
+
+            badge = '<span class="badge contributor">Kontributor</span>';
+
+        } else {
+
+            badge = '<span class="badge member">Member</span>';
+
+        }
+
+
+
+        const commentDiv = document.createElement("div");
+
+        commentDiv.className = "comment";
+
+        commentDiv.setAttribute("data-id", id);
+
+
+            let tooltipText = "";
+
+            if (role === "Admin") {
+
+                tooltipText = "Pengguna dengan hak akses penuh.";
+
+            } else if (role === "Kontributor") {
+
+                tooltipText = "Pengguna yang berkontribusi pada konten.";
+
+            } else {
+
+                tooltipText = "Pengguna biasa.";
+
+            }
+
+        commentDiv.innerHTML = `
+
+            <div class="author">${author} ${badge} - ${formattedTime}</div>
+
+<span class="tooltip">${tooltipText}</span>
+
+            <div class="text">${filteredText}</div>
+
+            <button class="reply-btn">Balas</button>
+
+            <div class="replies"></div>
+
+<button class="like-btn" data-comment-id="${id}">Like <span class="like-count">${likes}</span></button>
+
+                <button class="unlike-btn" data-comment-id="${id}">Unlike <span class="unlike-count">${unlikes}</span></button>
+
+        `;
+
+
+
+        if (parentId) {
+
+            const parentComment = document.querySelector(`[data-id='${parentId}'] .replies`);
+
+            parentComment.appendChild(commentDiv);
+
+        } else {
+
+            commentSection.appendChild(commentDiv);
+
+        }
+
+
+
+        const replyBtn = commentDiv.querySelector(".reply-btn");
+
+        replyBtn.addEventListener("click", () => {
+
+            const replyInput = document.createElement("textarea");
+
+            replyInput.placeholder = "Tulis balasan Anda...";
+
+            replyInput.rows = 2;
+
+            const sendReplyBtn = document.createElement("button");
+
+            sendReplyBtn.textContent = "Kirim Balasan";
+
+
+
+            commentDiv.appendChild(replyInput);
+
+            commentDiv.appendChild(sendReplyBtn);
+
+
+
+            sendReplyBtn.addEventListener("click", () => {
+
+                const replyText = replyInput.value.trim();
+
+                if (replyText) {
+
+                    const filteredReplyText = filterText(replyText);
+
+                    addComment("Pengguna", filteredReplyText, id);
+
+                    replyInput.remove();
+
+                    sendReplyBtn.remove();
+
+                }
+
+            });
+
+        });
+
+    };
+
+
+
+    // Event listener untuk mengirim komentar
+
+    document.getElementById("submitComment").addEventListener("click", () => {
+
+        const commentInput = document.getElementById("commentInput");
+
+        const text = commentInput.value.trim();
+
+        if (text) {
+
+            addComment("Pengguna", text);
+
+            commentInput.value = "";
+
+        }
+
+    });
+
+
+
+    // Mendengarkan perubahan pada database
+
+    onChildAdded(commentRef, (data) => {
+
+        const comment = data.val();
+
+        addCommentToDOM(data.key, comment.author, comment.text, comment.timestamp, comment.role, comment.parentId,  comment.likes || 0, comment.unlikes || 0);
+
+    });
+
+
+
+
+let latestComments = [];
+
+
+
+const updateLatestCommentsDisplay = () => {
+
+    latestCommentSection.innerHTML = "";
+
+    latestComments.forEach(comment => {
+
+        const formattedTime = new Date(comment.timestamp).toLocaleString("id-ID", { weekday: "short", hour: "2-digit", minute: "2-digit", second: "2-digit" });
+
+        const badge = comment.role === "Admin" ? '<span class="badge admin">Admin</span>' :
+
+            comment.role === "Kontributor" ? '<span class="badge contributor">Kontributor</span>' :
+
+            '<span class="badge member">Member</span>';
+
+        const commentDiv = document.createElement("div");
+
+        commentDiv.className = "comment";
+
+        commentDiv.innerHTML = `<div class="author">${comment.author} ${badge} - ${formattedTime}</div><div class="text">${comment.text}</div>`;
+
+        latestCommentSection.appendChild(commentDiv);
+
+    });
+
+};
+
+
+
+ // Like dan Unlike Functionality
+
+        document.addEventListener("click", (event) => {
+
+            if (event.target.classList.contains("like-btn")) {
+
+                const commentId = event.target.dataset.commentId;
+
+                updateLikes(commentId, 1);
+
+                event.target.classList.add("active");
+
+                event.target.nextElementSibling.classList.remove("active");
+
+            } else if (event.target.classList.contains("unlike-btn")) {
+
+                const commentId = event.target.dataset.commentId;
+
+                updateLikes(commentId, -1);
+
+                event.target.classList.add("active");
+
+                event.target.previousElementSibling.classList.remove("active");
+
+            }
+
+        });
+
+
+
+      const updateLikes = (commentId, increment) => {
+
+    const commentRefById = ref(database, `comments/${commentId}`);
+
+
+
+    runTransaction(commentRefById, (commentData) => {
+
+        if (!commentData) {
+
+            return null;
+
+        }
+
+
+
+        const newLikes = (commentData.likes || 0) + (increment === 1 ? 1 : 0);
+
+        const newUnlikes = (commentData.unlikes || 0) + (increment === -1 ? 1 : 0);
+
+
+
+        // PERBAIKAN: Gunakan cara ini (shorthand yang benar)
+
+        return { ...commentData, likes: newLikes, unlikes: newUnlikes };
+
+
+
+        // ATAU: Anda bisa juga menggunakan cara yang lebih panjang ini (jika lebih suka)
+
+        // return { ...commentData, likes: newLikes, unlikes: newUnlikes };
+
+    }).then(() => { // ... (rest of the code)
+
+    }).catch((error) => { // ... (rest of the code)
+
+    });
+
+};
+
+
+
+
+
+
+
+// Menggunakan onValue untuk mengambil dan menampilkan komentar terbaru
+
+onValue(commentRef, (snapshot) => {
+
+    const comments = snapshot.val();
+
+    latestComments = Object.values(comments || {}).sort((a, b) => b.timestamp - a.timestamp).slice(0, maxLatestComments);
+
+    updateLatestCommentsDisplay(); // Panggil hanya sekali di sini
+
+});
+
+
+
+
+
+
+
+    </script>
+
 </body>
-</html>
+
+</html> tambahkan codingan view count setiap kolom komentar dan reply, ketika di
